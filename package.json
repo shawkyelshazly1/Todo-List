@@ -1,0 +1,31 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "A perfectly designed Todo List project for your everyday need",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shawkyelshazly1/Todo-List.git"
+  },
+  "keywords": [
+    "todo",
+    "list",
+    "tasks"
+  ],
+  "author": "Shawky Elshazlii",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shawkyelshazly1/Todo-List/issues"
+  },
+  "homepage": "https://github.com/shawkyelshazly1/Todo-List#readme",
+  "devDependencies": {
+    "css-loader": "^6.4.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.59.1",
+    "webpack-cli": "^4.9.1"
+  }
+}
