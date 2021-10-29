@@ -20,8 +20,10 @@
   padding: 15px;
   border-right: 1.2px solid rgba(182, 181, 181, 0.55);
   min-height: 100vh;
+  max-height: 100vh;
   min-width: 90px;
   align-items: center;
+  position: fixed;
 }
 
 .dock .title {
@@ -64,35 +66,29 @@
   width: 22px;
   height: 22px;
   border-radius: 100%;
-}
-
-.dock .colors .color_btn {
-  animation-name: fadeOut;
-  animation-duration: 0.4s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
+  cursor: pointer;
 }
 
 /* TODO: Fix FadeOut Animation  Important:*/
 
-.dock .colors .color_red {
-  background: rgba(246, 71, 71, 0.993);
+.dock .colors.open .color_red {
+  background: rgba(253, 94, 94, 0.993);
   animation-delay: 0.5s;
 }
-.dock .colors .color_blue {
-  background: rgb(72, 72, 255);
+.dock .colors.open .color_blue {
+  background: rgb(90, 90, 253);
   animation-delay: 0.9s;
 }
-.dock .colors .color_yellow {
-  background: rgb(248, 248, 73);
+.dock .colors.open .color_yellow {
+  background: rgb(250, 250, 96);
   animation-delay: 1.1s;
 }
-.dock .colors .color_purple {
-  background: rgb(190, 24, 190);
+.dock .colors.open .color_purple {
+  background: rgb(251, 102, 251);
   animation-delay: 1.4s;
 }
-.dock .colors .color_green {
-  background: rgb(31, 185, 31);
+.dock .colors.open .color_green {
+  background: rgb(77, 236, 77);
   animation-delay: 1.7s;
 }
 
@@ -113,20 +109,6 @@
   to {
     opacity: 1;
   }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-
-.dock .active {
-  visibility: visible;
 }
 
 .dock .middle_section {
@@ -158,4 +140,120 @@
   font-size: 40px;
   margin: 0 auto;
   cursor: pointer;
+}
+
+.main {
+  padding: 2rem;
+  width: 100%;
+  min-height: 100%;
+  margin-left: 90px;
+}
+
+.main .title {
+  font-size: 50px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.main .items_container .notes_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.main .items_container .notes_container .note {
+  width: 100%;
+  min-height: 250px;
+  max-height: 2500px;
+  background: rgb(113, 113, 243);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  gap: 0.5rem;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.main .items_container .notes_container .note p {
+  display: -webkit-box;
+  -webkit-line-clamp: 11;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  border: none;
+  outline: none;
+  pointer-events: none;
+}
+
+.main .items_container .notes_container .note h1 {
+  pointer-events: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal .modal_content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #f4f4f4;
+  margin: 15% auto;
+  padding: 30px 30px 40px 30px;
+  width: 30%;
+  height: 35%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+}
+
+.note :empty:before {
+  content: attr(placeholder);
+  pointer-events: none;
+  display: block;
+  color: rgba(51, 50, 50, 0.575);
+}
+
+.modal_content [contenteditable="true"]:empty:before {
+  content: attr(placeholder);
+  pointer-events: none;
+  display: block;
+  color: rgba(51, 50, 50, 0.575);
+}
+
+.modal_content [contenteditable="true"]:focus {
+  outline: 0px solid transparent;
+}
+
+.note_red {
+  background: rgba(251, 120, 120, 0.99) !important;
+}
+.note_blue {
+  background: rgb(113, 113, 243) !important;
+}
+.note_yellow {
+  background: rgb(245, 245, 145) !important;
+}
+.note_purple {
+  background: rgb(251, 180, 251) !important;
+}
+.note_green {
+  background: rgb(133, 249, 133) !important;
 }
