@@ -53,7 +53,7 @@ export default function DockComponent() {
   let middleSectionContainer = document.createElement("div");
   middleSectionContainer.classList.add("middle_section");
 
-  middleSectionContainer.innerHTML = `<i class="fas fa-tasks tasks_btn"></i>
+  middleSectionContainer.innerHTML = `<i class="fas fa-tasks tasks_btn active"></i>
   <i class="fas fa-sticky-note notes_btn"></i>`;
 
   let bottomSectionContainer = document.createElement("div");
@@ -68,9 +68,5 @@ export default function DockComponent() {
   dockContainer.appendChild(middleSectionContainer);
   dockContainer.appendChild(bottomSectionContainer);
 
-  // document.querySelector(".add_new").addEventListener("click", (e) => {
-  //   document.querySelector(".colors").classList.toggle("open");
-  //   document.querySelector(".colors").classList.toggle("display");
-  // });
   return dockContainer;
 }

@@ -1,24 +1,40 @@
 import Note from "../modules/Note";
 import Storage from "../modules/Storage";
 import NoteComponent from "./note";
+import ProjectComponent from "./projectComponent";
 
-function MainComponent() {
+function MainComponent(view) {
   let container = document.createElement("div");
   container.classList.add("main");
 
-  loadView().components.forEach((component) => {
+  loadView(view).components.forEach((component) => {
     container.appendChild(component);
   });
 
   return container;
 }
 
-function loadView() {
+function loadView(view) {
   let components = [];
 
   let title = document.createElement("h1");
-  title.textContent = `Tasks`;
+  title.textContent = `${view}`;
 
+  components.push(title);
+
+  switch (view) {
+    case "Tasks":
+      components.push(loadTasksView());
+      break;
+    case "Notes":
+      components.push(loadNotesView());
+      break;
+  }
+
+  return { components };
+}
+
+function loadNotesView() {
   let container = document.createElement("div");
   container.classList.add("items_container");
 
@@ -40,9 +56,20 @@ function loadView() {
 
   container.appendChild(notesContainer);
 
-  components = [title, container];
+  return container;
+}
 
-  return { components };
+function loadTasksView() {
+  let container = document.createElement("div");
+  container.classList.add("lists_container");
+
+  Storage.getProjectsList()
+    .getProjects()
+    .forEach((project) => {
+      container.appendChild(ProjectComponent(project));
+    });
+
+  return container;
 }
 
 export { MainComponent };
