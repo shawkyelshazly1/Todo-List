@@ -1,6 +1,8 @@
 import Note from "../modules/Note";
+import Project from "../modules/Project";
 import Storage from "../modules/Storage";
 import NoteComponent from "./note";
+import ProjectComponent from "./projectComponent";
 
 export default function DockComponent() {
   let dockContainer = document.createElement("div");
@@ -37,10 +39,27 @@ export default function DockComponent() {
   colors.forEach((color) =>
     color.addEventListener("click", (e) => {
       colorsContainer.classList.toggle("open");
-
-      let note = new Note("", "", e.target.classList[1].split("_")[1]);
-      Storage.addNote(note);
-      document.querySelector(".notes_container").prepend(NoteComponent(note));
+      if (document.querySelector(".tasks_btn").classList.contains("active")) {
+        let newProject = new Project(
+          "New Project",
+          e.target.classList[1].split("_")[1]
+        );
+        Storage.addProject(newProject);
+        document
+          .querySelector(".lists_container")
+          .appendChild(ProjectComponent(newProject));
+        document.querySelector(".lists_container").scrollBy({
+          top: 0,
+          left: 9999,
+          behavior: "smooth",
+        });
+      } else if (
+        document.querySelector(".notes_btn").classList.contains("active")
+      ) {
+        let note = new Note("", "", e.target.classList[1].split("_")[1]);
+        Storage.addNote(note);
+        document.querySelector(".notes_container").prepend(NoteComponent(note));
+      }
     })
   );
 

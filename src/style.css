@@ -205,7 +205,7 @@
   width: 100%;
   height: auto;
   max-height: 840px;
-  overflow: auto;
+  overflow: hidden;
   gap: 1rem;
   padding-bottom: 1rem;
 }
@@ -219,10 +219,13 @@
   flex-direction: column;
   background-color: rgb(194, 194, 194);
   padding: 1rem;
+  padding-top: 2rem;
   border-radius: 10px;
   height: auto;
   max-height: 100%;
   min-height: 100%;
+  gap: 1rem;
+  position: relative;
 }
 
 .main .lists_container .tasks_container .tasks {
@@ -235,6 +238,7 @@
   gap: 1rem;
   width: 100%;
   align-items: center;
+  text-align: center;
   padding: 1rem;
 }
 
@@ -250,6 +254,65 @@
   -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.14);
   box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.14);
   cursor: pointer;
+}
+
+.main .lists_container .add_task_container {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2rem;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.main .lists_container .add_task_container.show_container {
+  display: flex !important;
+}
+.main .lists_container .tasks_container .new_task_btn.hide_btn {
+  display: none !important;
+}
+.main .lists_container .add_task_container .add_task_field {
+  width: 100%;
+  padding: 10px 8px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  font-size: 17px;
+}
+.main .lists_container .add_task_container .add_task_btn {
+  padding: 10px 50px;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 17px;
+  cursor: pointer;
+  background-color: black;
+  color: whitesmoke;
+}
+
+.main .lists_container .tasks_container .new_task_btn {
+  position: absolute;
+  bottom: 0;
+  outline: none;
+  border: none;
+  font-size: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  cursor: pointer;
+  background-color: black;
+  color: whitesmoke;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  transition: all ease-in-out 0.5s;
+}
+.main .lists_container .tasks_container .new_task_btn:hover {
+  transform: scale(1.2) rotate(90deg);
 }
 
 .modal {
@@ -295,18 +358,23 @@
   outline: 0px solid transparent;
 }
 
-.note_red {
+.note_red,
+.project_red {
   background: rgba(251, 120, 120, 0.99) !important;
 }
-.note_blue {
+.note_blue,
+.project_blue {
   background: rgb(113, 113, 243) !important;
 }
-.note_yellow {
+.note_yellow,
+.project_yellow {
   background: rgb(245, 245, 145) !important;
 }
-.note_purple {
+.note_purple,
+.project_purple {
   background: rgb(251, 180, 251) !important;
 }
-.note_green {
+.note_green,
+.project_green {
   background: rgb(133, 249, 133) !important;
 }

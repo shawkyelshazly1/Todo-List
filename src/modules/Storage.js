@@ -54,6 +54,19 @@ export default class Storage {
     Storage.saveNotesList(notesList);
   }
 
+  static addNewTask(newTask, destProject) {
+    let projectsList = Storage.getProjectsList();
+    let projects = projectsList.getProjects();
+
+    destProject.addTask(newTask);
+    projects = projects.map((project) =>
+      project.getId() !== destProject.getId() ? project : destProject
+    );
+
+    projectsList.setProjects(projects);
+    Storage.saveProjectsList(projectsList);
+  }
+
   static addProject(newProject) {
     let projectsList = Storage.getProjectsList();
     projectsList.addProject(newProject);

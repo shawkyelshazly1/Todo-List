@@ -19,6 +19,8 @@ export default class ProjectsList {
     return this.projects.filter((project) => project.getId() === id);
   }
 
+  
+
   deleteProject(id) {
     this.projects = this.projects.filter((project) => project.getId() !== id);
   }

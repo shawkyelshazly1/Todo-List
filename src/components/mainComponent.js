@@ -10,6 +10,7 @@ function MainComponent(view) {
   loadView(view).components.forEach((component) => {
     container.appendChild(component);
   });
+  
 
   return container;
 }
@@ -25,6 +26,7 @@ function loadView(view) {
   switch (view) {
     case "Tasks":
       components.push(loadTasksView());
+
       break;
     case "Notes":
       components.push(loadNotesView());
@@ -73,3 +75,5 @@ function loadTasksView() {
 }
 
 export { MainComponent };
+
+

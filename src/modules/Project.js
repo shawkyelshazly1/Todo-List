@@ -1,9 +1,10 @@
 import { v4 as uuidv4 } from "uuid";
 export default class Project {
-  constructor(title) {
+  constructor(title, color = "blue") {
     this.title = title;
     this.id = uuidv4();
     this.tasks = [];
+    this.color = color;
   }
 
   getTitle() {
@@ -32,5 +33,20 @@ export default class Project {
 
   getTasks() {
     return this.tasks;
+  }
+
+  getColor() {
+    switch (this.color) {
+      case "blue":
+        return "project_blue";
+      case "red":
+        return "project_red";
+      case "yellow":
+        return "project_yellow";
+      case "purple":
+        return "project_purple";
+      case "green":
+        return "project_green";
+    }
   }
 }
